@@ -1,0 +1,23 @@
+The idea of this exercise is to play a little bit with reactjs and build a simple game for the course javascriptDesignPatterns of Udacity
+
+How i did it:
+* npm init
+* git init
+* git remote add origin git@github.com:alamillac/cat-clicker.git
+* npm i webpack -S
+* npm i babel-loader babel-preset-es2015 babel-preset-react -S
+* npm i react react-dom -S
+* touch webpack.config.js (and copy webpack config)
+* echo -e "{\n    'presets': ['es2015', 'react']\n}" > .babelrc
+* mkdir -p src/client/app
+* mkdir -p src/client/public
+* eslint --init
+
+
+Current goal:
+* None
+
+Previous goal:
+* build a simple reactjs page with babel6 and webpack
+* display a cat image in the app
+* count and show clicks in cat image
