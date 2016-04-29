@@ -21,3 +21,4 @@ Previous goal:
 * build a simple reactjs page with babel6 and webpack
 * display a cat image in the app
 * count and show clicks in cat image
+* Create a list of at least 5 cats and when one is selected show the count of clicks for that cat

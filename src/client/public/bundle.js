@@ -72,25 +72,88 @@
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 	
-	    function App() {
+	    function App(props) {
 	        _classCallCheck(this, App);
 	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+	
+	        _this.state = { catId: 0 };
+	        _this.onSelectedCat = _this.onSelectedCat.bind(_this);
+	        _this.onClick = _this.onClick.bind(_this);
+	        _this.cats = [{
+	            id: 0,
+	            name: "cat1",
+	            image: "cat.jpg",
+	            clicks: 0
+	        }, {
+	            id: 1,
+	            name: "cat2",
+	            image: "cat2.jpg",
+	            clicks: 0
+	        }, {
+	            id: 2,
+	            name: "cat3",
+	            image: "cat3.jpg",
+	            clicks: 0
+	        }, {
+	            id: 3,
+	            name: "cat4",
+	            image: "cat4.jpg",
+	            clicks: 0
+	        }, {
+	            id: 4,
+	            name: "cat5",
+	            image: "cat5.jpg",
+	            clicks: 0
+	        }, {
+	            id: 5,
+	            name: "cat6",
+	            image: "cat6.jpg",
+	            clicks: 0
+	        }];
+	        return _this;
 	    }
 	
 	    _createClass(App, [{
+	        key: 'onSelectedCat',
+	        value: function onSelectedCat(event) {
+	            var selectedCatId = event.currentTarget.dataset.id;
+	            this.setState({ catId: selectedCatId });
+	        }
+	    }, {
+	        key: 'onClick',
+	        value: function onClick() {
+	            var selectedCat = this.cats[this.state.catId];
+	            selectedCat.clicks += 1;
+	            this.setState({ clicks: selectedCat.clicks });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+	
+	            var selectedCat = this.cats[this.state.catId];
+	
 	            return _react2.default.createElement(
 	                'div',
 	                null,
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    this.cats.map(function (cat) {
+	                        return _react2.default.createElement(
+	                            'li',
+	                            { key: cat.id, 'data-id': cat.id, onClick: _this2.onSelectedCat },
+	                            cat.name
+	                        );
+	                    })
+	                ),
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
 	                    'Click cat counter'
 	                ),
-	                _react2.default.createElement(_ClickCatCounter2.default, { name: 'cat1', image: 'cat.jpg' }),
-	                _react2.default.createElement(_ClickCatCounter2.default, { name: 'cat2', image: 'cat2.jpg' })
+	                _react2.default.createElement(_ClickCatCounter2.default, { onClick: this.onClick, name: selectedCat.name, image: selectedCat.image, clicks: selectedCat.clicks })
 	            );
 	        }
 	    }]);
@@ -20586,18 +20649,11 @@
 	
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ClickCatCounter).call(this, props));
 	
-	        _this.state = { clicks: 0 };
-	        _this.onClick = _this.onClick.bind(_this);
+	        _this.state = { clicks: props.clicks };
 	        return _this;
 	    }
 	
 	    _createClass(ClickCatCounter, [{
-	        key: "onClick",
-	        value: function onClick() {
-	            var numClicks = this.state.clicks + 1;
-	            this.setState({ clicks: numClicks });
-	        }
-	    }, {
 	        key: "render",
 	        value: function render() {
 	            var styles = {
@@ -20608,7 +20664,7 @@
 	            return _react2.default.createElement(
 	                "div",
 	                null,
-	                _react2.default.createElement("img", { style: styles.img, src: "public/images/" + this.props.image, onClick: this.onClick }),
+	                _react2.default.createElement("img", { style: styles.img, src: "public/images/" + this.props.image, onClick: this.props.onClick }),
 	                _react2.default.createElement(
 	                    "p",
 	                    null,
@@ -20626,7 +20682,7 @@
 	                    _react2.default.createElement(
 	                        "span",
 	                        null,
-	                        this.state.clicks
+	                        this.props.clicks
 	                    )
 	                )
 	            );
