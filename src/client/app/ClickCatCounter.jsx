@@ -21,12 +21,17 @@ class ClickCatCounter extends React.Component {
         };
         return (
         <div>
-            <img style={styles.img} src="public/images/cat.jpg" onClick={this.onClick} />
+            <img style={styles.img} src={`public/images/${this.props.image}`} onClick={this.onClick} />
+            <p>cat name: <span>{this.props.name}</span></p>
             <p>num clicks: <span>{this.state.clicks}</span></p>
         </div>
         );
     }
-
 }
+
+ClickCatCounter.propTypes = {
+    name: React.PropTypes.string,
+    image: React.PropTypes.string
+};
 
 export default ClickCatCounter;

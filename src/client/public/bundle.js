@@ -89,7 +89,8 @@
 	                    null,
 	                    'Click cat counter'
 	                ),
-	                _react2.default.createElement(_ClickCatCounter2.default, null)
+	                _react2.default.createElement(_ClickCatCounter2.default, { name: 'cat1', image: 'cat.jpg' }),
+	                _react2.default.createElement(_ClickCatCounter2.default, { name: 'cat2', image: 'cat2.jpg' })
 	            );
 	        }
 	    }]);
@@ -20607,7 +20608,17 @@
 	            return _react2.default.createElement(
 	                "div",
 	                null,
-	                _react2.default.createElement("img", { style: styles.img, src: "public/images/cat.jpg", onClick: this.onClick }),
+	                _react2.default.createElement("img", { style: styles.img, src: "public/images/" + this.props.image, onClick: this.onClick }),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "cat name: ",
+	                    _react2.default.createElement(
+	                        "span",
+	                        null,
+	                        this.props.name
+	                    )
+	                ),
 	                _react2.default.createElement(
 	                    "p",
 	                    null,
@@ -20624,6 +20635,11 @@
 	
 	    return ClickCatCounter;
 	}(_react2.default.Component);
+	
+	ClickCatCounter.propTypes = {
+	    name: _react2.default.PropTypes.string,
+	    image: _react2.default.PropTypes.string
+	};
 	
 	exports.default = ClickCatCounter;
 

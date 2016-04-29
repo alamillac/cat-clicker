@@ -7,7 +7,8 @@ class App extends React.Component {
         return (
                 <div>
                     <h1>Click cat counter</h1>
-                    <ClickCatCounter />
+                    <ClickCatCounter name="cat1" image="cat.jpg" />
+                    <ClickCatCounter name="cat2" image="cat2.jpg" />
                 </div>
         );
     }
